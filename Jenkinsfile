@@ -44,7 +44,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 dir('bookmyshow-app') {
-                    sh 'docker build -t bookmyshow-app .'
+                    sh 'docker build -t bms-app .'
                 }
             }
         }
@@ -53,7 +53,7 @@ pipeline {
             steps {
                 sh '''
                 docker rm -f bookmyshow-container || true
-                docker run -d -p 3000:3000 --name bookmyshow-container bookmyshow-app
+                docker run -d -p 3000:3000 --name bookmyshow-container bms-app
                 '''
             }
         }
