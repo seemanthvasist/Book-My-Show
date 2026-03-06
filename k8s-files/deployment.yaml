@@ -2,19 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bms-app
-  namespace: vasist-ns
+  labels:
+    app: bms
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: bms-app
+      app: bms
   template:
     metadata:
       labels:
-        app: bms-app
+        app: bms
     spec:
       containers:
       - name: bms-container
-        image: vasist/bms-app:v1
+        image: kastrov/bms:latest  # Replace with your Docker image
         ports:
-        - containerPort: 3000
+        - containerPort: 3000  # Replace with the port your app runs on
